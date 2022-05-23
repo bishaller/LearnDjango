@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index_page
+from blog.views import index_page, root, add, subtract, multiply, divide
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('random/', index_page),
+    path("admin/", admin.site.urls),
+    path("blog/", index_page),
+    path("add/", add),
+    path("subtract/", subtract),
+    path("multiply/", multiply),
+    path("divide/", divide),
+    path("", root),
 ]
