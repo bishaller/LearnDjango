@@ -1,37 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block content %}
+{% include 'welcome.html' %}
 
-<body>
-    <h1>Hello World</h1>
-    <p>
-        {% if a is not None %}
+<hr>
 
-        {{ a }} + {{ b }} = {{ t_sum }}
+<div>
+    {% for post in posts %}
 
-        {% endif %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <p>
+            {{ post.content }}
+        </p>
+    </article>
+    <hr>
+    {% endfor %}
+</div>
 
-    </p>
-    <p>
-
-
-    <form method="post" action="/blog/">
-        {% csrf_token %}
-
-        a: <input type="number" name="a"> <br><br>
-        b: <input type="number" name="b"> <br><br>
-        <button type="submit">Add</button>
-    </form>
-
-
-
-    </p>
-</body>
-
-</html>
+{% endblock content %}

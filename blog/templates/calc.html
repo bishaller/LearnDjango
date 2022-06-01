@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{{ name }}
+<h1>Hello World</h1>
+<p>
+    {% if a is not None %}
+
+    {{ a }} + {{ b }} = {{ t_sum }}
+
+    {% endif %}
+
+</p>
+<p>
+
+
+<form method="post" action="/blog/">
+    {% csrf_token %}
+
+    a: <input type="number" name="a"> <br><br>
+    b: <input type="number" name="b"> <br><br>
+    <input type="submit" value="Calculate">
+</form>
+
+</p>
+
+{% endblock %}

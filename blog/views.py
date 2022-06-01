@@ -1,10 +1,13 @@
 from django.shortcuts import render
-
-def root(request):
-    return render(request, "root.html")
+from .models import Post
 
 
 def index_page(request):
+    posts = Post.objects.all()
+    ctx = {"posts": posts}
+    return render(request, "index.html", ctx)
+
+def calc_page(request):
     a = request.POST.get("a")
     b = request.POST.get("b")
 
@@ -14,7 +17,7 @@ def index_page(request):
         sum = "error"
 
     ctx = {"t_sum": sum, "a": a, "b": b}
-    return render(request, "index.html", ctx)
+    return render(request, "calc.html", ctx)
 
 
 def add(request):
@@ -57,3 +60,5 @@ def divide(request):
 
     ctx = {"t_divide": divide, "a": a, "b": b}
     return render(request, "divide.html", ctx)
+
+    
